@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yotukka – Restaurant </title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<nav class="navbar" id="navbar">
+
+  <!-- LEFT: HAMBURGER -->
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+
+  <!-- LOGO -->
+  <button class="nav-logo" onclick="showPage('home')">
+    <span>🍔</span> Yotukka
+  </button>
+
+  <!-- NAV LINKS -->
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#" onclick="showPage('home');return false;" data-page="home">Home</a></li>
+    <li><a href="#" onclick="showPage('home','restaurants');return false;" data-page="restaurants">Restaurants</a></li>
+    <li><a href="#" onclick="showPage('home','offers');return false;" data-page="offers">Offers</a></li>
+    <li><a href="#" onclick="showPage('myorders');return false;" data-page="myorders">My Orders</a></li>
+  </ul>
+
+  <!-- RIGHT SIDE -->
+  <div class="nav-actions">
+
+    <!-- LOCATION ADD -->
+    <div class="nav-location" onclick="toggleLocationDropdown()">
+      📍 <span id="locationDisplay">Sector 18, Noida</span>
+    </div>
+    <!-- ======================================== -->
+    <div class="nav-search">
+     <input type="text" id="navSearchInput" placeholder="Search food..." />
+    </div>
+    <!-- ====================================================== -->
+    
+
+    
+
+    <div class="user-menu" id="userMenu">
+      <button class="user-avatar" id="userAvatar">U</button>
+      <div class="user-dropdown" id="userDropdown">
+        <div class="user-dropdown-header">
+          <strong class="user-name" id="userName">User</strong>
+          <small class="user-email" id="userEmail">user@email.com</small>
+        </div>
+        <a class="dropdown-item" href="#" onclick="showPage('myorders');return false;">📦 My Orders</a>
+        <a class="dropdown-item" href="#">❤️ Saved</a>
+        <a class="dropdown-item" href="#">⚙️ Settings</a>
+        <div class="dropdown-item danger" id="logoutBtn">🚪 Logout</div>
+      </div>
+    </div>
+
+  </div>
+
+</nav>
+
+<!-- LOCATION DROPDOWN -->
+<div class="location-dropdown" id="locationDropdown">
+  <p class="location-dropdown-title">📍 Choose your delivery location</p>
+  <div class="location-suggestions">
+    <div class="location-chip">Sector 18, Noida</div>
+    <div class="location-chip">Connaught Place, Delhi</div>
+    <div class="location-chip">Koregaon Park, Pune</div>
+    <div class="location-chip">Indiranagar, Bangalore</div>
+    <div class="location-chip">Bandra, Mumbai</div>
+    <div class="location-chip">Salt Lake, Kolkata</div>
+    <div class="location-chip">Anna Nagar, Chennai</div>
+    <div class="location-chip">Hitech City, Hyderabad</div>
+  </div>
+</div>
+
+<!-- ==================== PAGE: HOME ==================== -->
+<div id="page-home" class="page active">
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      
+      <h1>Hungry? We've got <em>everything</em> you crave</h1>
+      <p>Order from the best local restaurants with easy, on-demand delivery. Your favourite meals, right at your door.</p>
+      <div class="hero-search" id="heroSearch">
+        <div class="location-select" onclick="toggleLocationDropdown()">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <div class="location-text">
+            <small>DELIVER TO</small>
+            <span class="location-text-val" id="locationDisplay">Sector 18, Noida</span>
+          </div>
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+        </div>
+        <div class="search-input-wrap">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" id="heroSearchInput" placeholder="Search for restaurant, cuisine, or dish…" autocomplete="off"/>
+        </div>
+        <button class="search-btn" id="heroSearchBtn">Find Food →</button>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><strong>15K+</strong><span>Restaurants</span></div>
+        <div class="stat"><strong>30 min</strong><span>Avg Delivery</span></div>
+        <div class="stat"><strong>5M+</strong><span>Happy Customers</span></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="floating-card">
+        <span class="fc-emoji">🍕</span>
+        <div class="fc-text"><strong>Pizza Paradise</strong><small>⭐ 4.7 · 30 mins</small></div>
+      </div>
+      <div class="floating-card fc-offset">
+        <span class="fc-emoji">🍱</span>
+        <div class="fc-text"><strong>Spice Garden</strong><small>⭐ 4.5 · 25 mins</small></div>
+      </div>
+      <div class="floating-card">
+        <span class="fc-emoji">🍔</span>
+        <div class="fc-text"><strong>Burger Nation</strong><small>⭐ 4.2 · 20 mins</small></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OFFERS -->
+  <section class="offers-section" id="offers">
+    <div class="section-header fade-up">
+      <div>
+        <div class="section-title">🔥 Today's Hot Deals</div>
+        <div class="section-subtitle">Exclusive offers just for you</div>
+      </div>
+      <a class="view-all" href="#">All Offers →</a>
+    </div>
+    <div class="offers-scroll fade-up">
+      <div class="offer-card offer-card-1">
+        <div class="offer-content">
+          <span class="offer-tag">LIMITED TIME</span>
+          <div class="offer-text"><h3>50% OFF<br>First Order</h3><p>Use code: FOODIE50</p></div>
+        </div>
+        <div class="offer-emoji">🎁</div>
+      </div>
+      <div class="offer-card offer-card-2">
+        <div class="offer-content">
+          <span class="offer-tag">WEEKEND SPECIAL</span>
+          <div class="offer-text"><h3>Free Delivery<br>All Weekend</h3><p>No minimum order</p></div>
+        </div>
+        <div class="offer-emoji">🛵</div>
+      </div>
+      <div class="offer-card offer-card-3">
+        <div class="offer-content">
+          <span class="offer-tag">COMBO DEAL</span>
+          <div class="offer-text"><h3>Buy 1<br>Get 1 Free</h3><p>On selected items</p></div>
+        </div>
+        <div class="offer-emoji">🍕</div>
+      </div>
+      <div class="offer-card offer-card-4">
+        <div class="offer-content">
+          <span class="offer-tag">CASHBACK</span>
+          <div class="offer-text"><h3>₹100 Back<br>on UPI Pay</h3><p>Min order ₹499</p></div>
+        </div>
+        <div class="offer-emoji">💰</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CATEGORIES -->
+  <section class="section-pad">
+    <div class="section-header fade-up">
+      <div>
+        <div class="section-title">🍽️ What's on your mind?</div>
+        <div class="section-subtitle">Explore by category</div>
+      </div>
+    </div>
+    <div class="categories-grid fade-up">
+      <div class="category-card" data-category="Pizza"><div class="category-icon">🍕</div><div class="category-name">Pizza</div></div>
+      <div class="category-card" data-category="Biryani"><div class="category-icon">🍱</div><div class="category-name">Biryani</div></div>
+      <div class="category-card" data-category="Burger"><div class="category-icon">🍔</div><div class="category-name">Burger</div></div>
+      <div class="category-card" data-category="Chinese"><div class="category-icon">🥡</div><div class="category-name">Chinese</div></div>
+      <div class="category-card" data-category="Dosa"><div class="category-icon">🫓</div><div class="category-name">Dosa</div></div>
+      <div class="category-card" data-category="Sushi"><div class="category-icon">🍣</div><div class="category-name">Sushi</div></div>
+      <div class="category-card" data-category="Desserts"><div class="category-icon">🍰</div><div class="category-name">Desserts</div></div>
+      <div class="category-card" data-category="Healthy"><div class="category-icon">🥗</div><div class="category-name">Healthy</div></div>
+      <div class="category-card" data-category="Street Food"><div class="category-icon">🌮</div><div class="category-name">Street Food</div></div>
+      <div class="category-card" data-category="Coffee"><div class="category-icon">☕</div><div class="category-name">Coffee</div></div>
+      <div class="category-card" data-category="Ice Cream"><div class="category-icon">🍦</div><div class="category-name">Ice Cream</div></div>
+      <div class="category-card" data-category="Sandwich"><div class="category-icon">🥪</div><div class="category-name">Sandwich</div></div>
+    </div>
+  </section>
+
+  <!-- RESTAURANTS -->
+  <section class="section-pad" id="restaurants">
+    <div class="section-header fade-up">
+      <div>
+        <div class="section-title">🏪 Popular Restaurants</div>
+        <div class="section-subtitle">Curated picks near you</div>
+      </div>
+    </div>
+    <div class="restaurant-controls fade-up">
+      <div class="filter-chips">
+        <button class="filter-btn" data-filter="veg">🟢 Pure Veg</button>
+        <button class="filter-btn" data-filter="rating">⭐ 4.3+</button>
+        <button class="filter-btn" data-filter="fast">⚡ Fast</button>
+        <button class="filter-btn" data-filter="price">💰 Low Price</button>
+      </div>
+      <div class="restaurant-search-wrap">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input id="mainSearchInput" type="text" placeholder="Search restaurants…" autocomplete="off">
+      </div>
+      <select class="sort-select" id="sortSelect">
+        <option value="">Sort by</option>
+        <option value="rating">Top Rated</option>
+        <option value="delivery">Fastest</option>
+        <option value="price_asc">Price: Low to High</option>
+      </select>
+    </div>
+    <div class="restaurants-grid" id="restaurantsGrid">
+      <!-- Populated by JS -->
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="reviews-section">
+    <div class="section-header fade-up">
+      <div>
+        <div class="section-title">💬 What Our Foodies Say</div>
+        <div class="section-subtitle">Real reviews from real customers</div>
+      </div>
+      <div class="reviews-nav">
+        <button class="review-arrow" id="reviewPrev">&#8592;</button>
+        <button class="review-arrow" id="reviewNext">&#8594;</button>
+      </div>
+    </div>
+    <div class="reviews-slider-wrapper fade-up">
+      <div class="reviews-slider" id="reviewsSlider">
+        <div class="review-card">
+          <div class="review-header">
+            <div class="reviewer-avatar" style="background:#e23744">P</div>
+            <div class="reviewer-info"><strong>Priya Sharma</strong><span>📍 Delhi</span></div>
+            <div class="review-badge">Verified ✓</div>
+          </div>
+          <div class="review-stars">★★★★★<span class="review-score">5.0</span></div>
+          <p class="review-text">"Yotukka completely changed how I order food! Super fast delivery and the food always arrives hot. Absolutely love the variety of restaurants available."</p>
+          <p class="review-food">Ordered: <span>Butter Chicken + Garlic Naan</span></p>
+          <div class="review-date">2 days ago</div>
+        </div>
+        <div class="review-card">
+          <div class="review-header">
+            <div class="reviewer-avatar" style="background:#7c3aed">R</div>
+            <div class="reviewer-info"><strong>Rahul Verma</strong><span>📍 Mumbai</span></div>
+            <div class="review-badge">Verified ✓</div>
+          </div>
+          <div class="review-stars">★★★★★<span class="review-score">5.0</span></div>
+          <p class="review-text">"Best food delivery app hands down. Live tracking is amazing and customer support actually responds! My go-to for late night hunger pangs."</p>
+          <p class="review-food">Ordered: <span>Chicken Biryani</span></p>
+          <div class="review-date">1 week ago</div>
+        </div>
+        <div class="review-card">
+          <div class="review-header">
+            <div class="reviewer-avatar" style="background:#059669">A</div>
+            <div class="reviewer-info"><strong>Ananya Gupta</strong><span>📍 Bangalore</span></div>
+            <div class="review-badge">Verified ✓</div>
+          </div>
+          <div class="review-stars">★★★★☆<span class="review-score">4.0</span></div>
+          <p class="review-text">"Incredible selection of healthy options! As someone who watches what they eat, Yotukka has become my daily companion. Salads arrive so fresh every time."</p>
+          <p class="review-food">Ordered: <span>Quinoa Bowl + Green Smoothie</span></p>
+          <div class="review-date">3 days ago</div>
+        </div>
+        <div class="review-card">
+          <div class="review-header">
+            <div class="reviewer-avatar" style="background:#f97316">K</div>
+            <div class="reviewer-info"><strong>Karan Mehta</strong><span>📍 Pune</span></div>
+            <div class="review-badge">Verified ✓</div>
+          </div>
+          <div class="review-stars">★★★★★<span class="review-score">5.0</span></div>
+          <p class="review-text">"The offers are unbeatable. I saved over ₹500 this month just from the app's deals. The pizza was phenomenal — super crispy crust every time!"</p>
+          <p class="review-food">Ordered: <span>Farmhouse Pizza</span></p>
+          <div class="review-date">5 days ago</div>
+        </div>
+        <div class="review-card">
+          <div class="review-header">
+            <div class="reviewer-avatar" style="background:#0891b2">S</div>
+            <div class="reviewer-info"><strong>Sneha Reddy</strong><span>📍 Hyderabad</span></div>
+            <div class="review-badge">Verified ✓</div>
+          </div>
+          <div class="review-stars">★★★★★<span class="review-score">5.0</span></div>
+          <p class="review-text">"Ordered for my whole office team and everyone loved it! Group ordering is seamless and checkout super quick. Will definitely order again!"</p>
+          <p class="review-food">Ordered: <span>Veg Biryani + Dal Makhani</span></p>
+          <div class="review-date">2 weeks ago</div>
+        </div>
+        <div class="review-card">
+          <div class="review-header">
+            <div class="reviewer-avatar" style="background:#dc2626">M</div>
+            <div class="reviewer-info"><strong>Manish Joshi</strong><span>📍 Chennai</span></div>
+            <div class="review-badge">Verified ✓</div>
+          </div>
+          <div class="review-stars">★★★★★<span class="review-score">5.0</span></div>
+          <p class="review-text">"Delivery was 10 minutes faster than expected. Packaging excellent — not a single spill. Dosa came crispy after 20 minutes. Impressive quality!"</p>
+          <p class="review-food">Ordered: <span>Masala Dosa + Filter Coffee</span></p>
+          <div class="review-date">4 days ago</div>
+        </div>
+      </div>
+    </div>
+    <div class="reviews-dots" id="reviewsDots"></div>
+    <div class="overall-rating fade-up">
+      <div class="or-score">
+        <span class="or-number">4.8</span>
+        <div class="or-stars">★★★★★</div>
+        <span class="or-label">Overall Rating</span>
+      </div>
+      <div class="or-bars">
+        <div class="or-bar-row"><span>5 ★</span><div class="or-bar"><div class="or-fill" style="width:78%"></div></div><span>78%</span></div>
+        <div class="or-bar-row"><span>4 ★</span><div class="or-bar"><div class="or-fill" style="width:15%"></div></div><span>15%</span></div>
+        <div class="or-bar-row"><span>3 ★</span><div class="or-bar"><div class="or-fill" style="width:5%"></div></div><span>5%</span></div>
+        <div class="or-bar-row"><span>2 ★</span><div class="or-bar"><div class="or-fill" style="width:2%"></div></div><span>2%</span></div>
+        <div class="or-bar-row"><span>1 ★</span><div class="or-bar"><div class="or-fill" style="width:0%"></div></div><span>0%</span></div>
+      </div>
+      <div class="or-stats">
+        <div class="or-stat-item"><strong>5M+</strong><span>Happy Customers</span></div>
+        <div class="or-stat-item"><strong>98%</strong><span>On-Time Delivery</span></div>
+        <div class="or-stat-item"><strong>4.9★</strong><span>App Store Rating</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">🍔 Yotukka</div>
+        <p>We deliver happiness, one meal at a time. Experience the joy of great food delivered fast to your doorstep.</p>
+        <div class="social-links">
+          <a href="#" class="social-btn">f</a>
+          <a href="#" class="social-btn">in</a>
+          <a href="#" class="social-btn">T</a>
+          <a href="#" class="social-btn">insta</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Press</a></li>
+          <li><a href="#">Investor Relations</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>For Foodies</h4>
+        <ul>
+          <li><a href="#">Yotukka Pro</a></li>
+          <li><a href="#">Yotukka Gold</a></li>
+          <li><a href="#">Safety</a></li>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">Help Centre</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>For Partners</h4>
+        <ul>
+          <li><a href="#">Partner with us</a></li>
+          <li><a href="#">Apps for You</a></li>
+          <li><a href="#">List Your Restaurant</a></li>
+          <li><a href="#">Delivery Partner</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Yotukka. All rights reserved. Built with ❤️ in India.</p>
+      <div class="footer-legal">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Cookie Policy</a>
+      </div>
+    </div>
+  </footer>
+
+</div><!-- /page-home -->
+
+<!-- ==================== PAGE: RESTAURANT ==================== -->
+<div id="page-restaurant" class="page">
+
+  <div class="restaurant-banner" id="restaurantBanner">
+    <img id="bannerImg" src="https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=1200&q=80" alt="Restaurant" loading="lazy">
+    <div class="banner-overlay"></div>
+    <div class="banner-info">
+      <button class="back-btn" onclick="showPage('home','restaurants')">← Back</button>
+      <h1 id="bannerName">Spice Garden</h1>
+      <p id="bannerCuisine">North Indian, Biryani, Mughlai • Sector 18, Noida</p>
+      <div class="banner-meta">
+        <span class="banner-rating" id="bannerRating">★ 4.5</span>
+        <span class="banner-badge">5K+ ratings</span>
+        <span class="banner-badge" id="bannerPrice">₹400 for two</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="restaurant-info-bar" id="restaurantInfoBar">
+    <div class="info-stat">
+      <strong id="infoRating">4.5 ★</strong>
+      <span>5K+ ratings</span>
+    </div>
+    <div class="info-stat">
+      <strong id="infoTime">25-30 min</strong>
+      <span>Delivery time</span>
+    </div>
+    <div class="info-stat">
+      <strong>₹149</strong>
+      <span>Min order</span>
+    </div>
+    <div class="info-stat">
+      <strong>₹49</strong>
+      <span>Delivery fee</span>
+    </div>
+    <div class="info-bar-actions">
+      <button class="info-action-btn">❤️ Save</button>
+      <button class="info-action-btn">📤 Share</button>
+    </div>
+  </div>
+
+  <div class="restaurant-offer-bar">
+    <div class="offer-strip-item"><span>🏷️</span><span><strong>20% OFF</strong> above ₹149 • Use <strong class="text-red">SPICE20</strong></span></div>
+    <div class="offer-strip-divider"></div>
+    <div class="offer-strip-item"><span>🚚</span><span><strong>Free Delivery</strong> on orders above ₹299</span></div>
+    <div class="offer-strip-divider"></div>
+    <div class="offer-strip-item"><span>⚡</span><span><strong>Lightning Delivery</strong> in 25 minutes</span></div>
+  </div>
+
+  <div class="menu-layout">
+    <div class="menu-nav" id="menuNav"><!-- JS --></div>
+    <div class="menu-content" id="menuContent"><!-- JS --></div>
+  </div>
+
+  <!-- CART PANEL (slide-in) -->
+  <div class="cart-panel" id="cartPanel">
+    <div class="cart-header">
+      <div>
+        <h3>Your Order 🛒</h3>
+        <p id="cartPanelRestName">Spice Garden</p>
+      </div>
+      <button class="cart-close" onclick="toggleCartPanel()">×</button>
+    </div>
+    <div class="cart-panel-items" id="cartPanelItems"></div>
+    <div class="cart-empty" id="cartPanelEmpty">
+      <div class="empty-icon">🛒</div>
+      <p>Your cart is empty.<br>Add items to get started!</p>
+    </div>
+    <div class="cart-footer" id="cartPanelFooter">
+      <div class="cart-total-row">
+        <span>Subtotal</span>
+        <strong id="cartPanelTotal">₹0</strong>
+      </div>
+      <button class="checkout-btn" onclick="showPage('cart')">Proceed to Checkout →</button>
+    </div>
+  </div>
+
+  <!-- Floating cart button (mobile) -->
+  <button class="floating-cart-btn" id="floatingCartBtn" onclick="toggleCartPanel()">
+    🛒 <span id="floatingCartCount">0</span> items
+  </button>
+
+</div><!-- /page-restaurant -->
+
+<!-- ==================== PAGE: CART / CHECKOUT ==================== -->
+<div id="page-cart" class="page">
+  <div class="cart-page">
+    <div class="breadcrumb">
+      <button onclick="showPage('home')">Home</button>
+      <span>›</span>
+      <button onclick="showPage('restaurant')">Restaurant</button>
+      <span>›</span>
+      <span>Checkout</span>
+    </div>
+    <h1 class="cart-page-title">Your Order 🛒</h1>
+    <div class="cart-page-layout">
+      <!-- LEFT -->
+      <div class="cart-left">
+        <!-- ORDER ITEMS -->
+        <div class="cart-section">
+          <h2>🍽️ Order Items</h2>
+          <div class="cart-items-list" id="cartItemsList"></div>
+          <div class="coupon-row">
+            <input type="text" id="couponInput" placeholder="Enter coupon code" class="coupon-input">
+            <button class="coupon-btn" onclick="applyCoupon()">Apply</button>
+          </div>
+        </div>
+        <!-- DELIVERY ADDRESS -->
+        <div class="cart-section">
+          <h2>📍 Delivery Address</h2>
+          <div class="addr-type-row">
+            <button class="addr-type-btn active-addr" onclick="setAddrType(this)">🏠 Home</button>
+            <button class="addr-type-btn" onclick="setAddrType(this)">💼 Work</button>
+            <button class="addr-type-btn" onclick="setAddrType(this)">📌 Other</button>
+          </div>
+          <div class="address-grid">
+            <input id="addr-name" type="text" class="form-input" placeholder="Full Name *" required>
+            <input id="addr-phone" type="tel" class="form-input" placeholder="Phone Number *" required>
+            <input id="addr-street" type="text" class="form-input full" placeholder="House/Flat No, Street, Area *" required>
+            <input type="text" class="form-input" placeholder="City" value="Noida">
+            <input type="text" class="form-input" placeholder="Pincode">
+            <textarea class="form-input full" placeholder="Delivery instructions (optional)" rows="2"></textarea>
+          </div>
+        </div>
+        <!-- PAYMENT -->
+        <div class="cart-section">
+          <h2>💳 Payment Method</h2>
+          <div class="payment-options">
+            <label class="payment-option selected">
+              <input type="radio" name="payment" value="upi" checked>
+              <span class="payment-icon">📱</span>
+              <div class="payment-info"><strong>UPI Payment</strong><span>Google Pay, PhonePe, Paytm, BHIM</span></div>
+              <span class="save-tag">SAVE ₹100</span>
+            </label>
+            <label class="payment-option">
+              <input type="radio" name="payment" value="card">
+              <span class="payment-icon">💳</span>
+              <div class="payment-info"><strong>Credit / Debit Card</strong><span>Visa, Mastercard, RuPay</span></div>
+            </label>
+            <label class="payment-option">
+              <input type="radio" name="payment" value="netbanking">
+              <span class="payment-icon">🏦</span>
+              <div class="payment-info"><strong>Net Banking</strong><span>All major banks supported</span></div>
+            </label>
+            <label class="payment-option">
+              <input type="radio" name="payment" value="cod">
+              <span class="payment-icon">💵</span>
+              <div class="payment-info"><strong>Cash on Delivery</strong><span>Pay when your order arrives</span></div>
+            </label>
+          </div>
+          <div id="upiInput" class="upi-input-wrap">
+            <input type="text" class="form-input" placeholder="Enter UPI ID (e.g. name@upi)" style="max-width:320px">
+          </div>
+        </div>
+      </div>
+      <!-- RIGHT: SUMMARY -->
+      <div class="order-summary">
+        <h2>📋 Order Summary</h2>
+        <div class="summary-restaurant-row">
+          <span style="font-size:24px">🏪</span>
+          <div>
+            <strong id="summaryRestName">Spice Garden</strong>
+            <p id="summaryRestAddr">Sector 18, Noida</p>
+          </div>
+          <div class="summary-rating">★ 4.5</div>
+        </div>
+        <div class="summary-items">
+          <div class="summary-item"><span>Item Total</span><strong id="summary-subtotal">₹0</strong></div>
+          <div class="summary-item"><span>Delivery Fee</span><strong id="summary-delivery">₹49</strong></div>
+          <div class="summary-item"><span>GST &amp; Taxes</span><strong id="summary-taxes">₹0</strong></div>
+          <div class="summary-item summary-discount-row"><span>🏷️ Coupon Discount</span><strong id="summary-discount">-₹0</strong></div>
+          <div class="summary-item summary-total-row">
+            <span>To Pay</span>
+            <strong id="summary-total">₹0</strong>
+          </div>
+        </div>
+        <button class="place-order-btn" id="placeOrderBtn">Place Order →</button>
+        <div class="secure-badge">🔒 Safe &amp; Secure Payments</div>
+        <div class="delivery-info-box">
+          <div>⏱️ Estimated delivery: <strong>25–30 minutes</strong></div>
+          <div>📞 We'll call you if there are any issues</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><!-- /page-cart -->
+
+<!-- ==================== PAGE: MY ORDERS ==================== -->
+<div id="page-myorders" class="page">
+  <div class="myorders-page">
+    <div class="breadcrumb">
+      <button onclick="showPage('home')">Home</button>
+      <span>›</span>
+      <span>My Orders</span>
+    </div>
+    <h1 class="cart-page-title">My Orders 📦</h1>
+    <div class="myorders-content" id="myOrdersContent">
+      <div class="empty-orders">
+        <div style="font-size:64px;margin-bottom:16px">📦</div>
+        <h3>No orders yet</h3>
+        <p>Looks like you haven't placed any orders. Start exploring restaurants!</p>
+        <button class="btn-explore" onclick="showPage('home','restaurants')">Explore Restaurants →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== AUTH MODAL ==================== -->
+<div class="modal-overlay" id="authModal">
+  <div class="modal">
+    <button class="modal-close" id="modalClose">×</button>
+    <h2>Welcome Back! 👋</h2>
+    <p>Log in to your account or create a new one</p>
+    <div class="modal-tabs">
+      <div class="modal-tab active" data-tab="loginTab">Login</div>
+      <div class="modal-tab" data-tab="signupTab">Sign Up</div>
+    </div>
+    <div id="loginTab" class="tab-content">
+      <form id="loginForm">
+        <div class="form-group"><label>Email Address</label><input type="email" placeholder="your@email.com" required></div>
+        <div class="form-group"><label>Password</label><input type="password" placeholder="Enter password" required></div>
+        <button type="submit" class="btn-primary">Login →</button>
+      </form>
+      <div class="divider">or continue with</div>
+      <div class="social-auth-grid">
+        <button class="social-login-btn">🔵 Google</button>
+        <button class="social-login-btn">📘 Facebook</button>
+      </div>
+    </div>
+    <div id="signupTab" class="tab-content" style="display:none">
+      <form id="signupForm">
+        <div class="form-group"><label>Full Name</label><input type="text" placeholder="Your full name" required></div>
+        <div class="form-group"><label>Email Address</label><input type="email" placeholder="your@email.com" required></div>
+        <div class="form-group"><label>Phone Number</label><input type="tel" placeholder="+91 XXXXX XXXXX"></div>
+        <div class="form-group"><label>Password</label><input type="password" placeholder="Create password" required></div>
+        <button type="submit" class="btn-primary">Create Account →</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="toast-container" id="toastContainer"></div>
+<script src="script.js"></script>
+</body>
+</html>
